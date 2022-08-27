@@ -1,0 +1,24 @@
+for (var input in inputs) part:
+
+with inputs is all the input which has attribute [name][rule]
+
+Run this code with input = "required|min:6"
+
+1. rules = ["required","min:6"] (nodeList)
+2. *enter for (var rule of rules)
+3. rule = "required" ==> ruleFunc = validatorRules["required"];
+
+it checked for formRules[input.name]
+
+==> formRule[password] is not an array; hence: formRule[password] = [f("required")]
+==============================================================================
+rule = "min:6" ==> hasValue ==> rule = min; ruleInfo[1] = 6;
+
+ruleFunc = validatorRules["min"] >> return func; 
+since function min return another function to actually
+get the Error message, so, run one more time: 
+==> ruleFunc = ruleFunc(6);
+
+it checked for formRules[input.name];
+
+formRule[password] is an array, hence formRule[password] = [f("required"),f("min")(6)]
